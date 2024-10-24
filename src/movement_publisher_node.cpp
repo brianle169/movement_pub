@@ -15,7 +15,9 @@ public:
 
 private:
     void updateMovementData() {
-
+        std::cout << "Update linear_x and angular_z values (float number), separate by a space > ";
+        std::cin >> lx >> az;
+        printf("\nYou have updated the data to { linear_x: %.1f, angular_z: %.1f}. Run \"ros2 topic echo /movement_data\" to check the data.\n")
     }
     void publishCallback() {
         // Instantiate and assign message
