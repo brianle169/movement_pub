@@ -8,9 +8,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(custom_interfaces REQUIRED)
 
 add_executable(movement_publisher_exec src/movement_publisher_node.cpp)
-ament_target_dependencies(movement_publisher_exec rclcpp)
+ament_target_dependencies(movement_publisher_exec rclcpp custom_interfaces)
 
 install(TARGETS
   movement_publisher_exec

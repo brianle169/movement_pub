@@ -9,6 +9,7 @@
         "/home/minh/ros2_ws/install/turtlesim/include/**",
         "/home/minh/ros2_ws/install/examples_rclcpp_cbg_executor/include/**",
         "/home/minh/ros2_ws/install/custom_interfaces/include/**",
+        "/home/minh/ros2_ws/install/custom_interfaces/include/custom_interfaces/**",
         "/opt/ros/humble/include/**",
         "/home/minh/ros2_ws/src/cpp_pubsub/include/**",
         "/home/minh/ros2_ws/src/movement_pub/include/**",
