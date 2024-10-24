@@ -11,13 +11,17 @@ public:
         publisher_ = this->create_publisher<custom_interfaces::msg::CircleMovement>("movement_data", 10);
         timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&MovementPublisher::publishCallback, this));
         input_thread_ = std::thread(std::bind(&MovementPublisher::updateMovementData,this));
+        input_thread_.detach(); // detach from main thread to run independently.
     }
 
 private:
     void updateMovementData() {
-        std::cout << "Update linear_x and angular_z values (float number), separate by a space > ";
-        std::cin >> lx >> az;
-        printf("\nYou have updated the data to { linear_x: %.1f, angular_z: %.1f}. Run \"ros2 topic echo /movement_data\" to check the data.\n")
+        // rclcpp::ok(): check whether our node is still running.
+        while (rclcpp::ok())  {
+            std::cout << "Update linear_x and angular_z values (float number), separate by a space > ";
+            std::cin >> lx >> az;
+            printf("\nYou have updated the data to { linear_x: %.1f, angular_z: %.1f}. Run \"ros2 topic echo /movement_data\" to check the data.\n");
+        }
     }
     void publishCallback() {
         // Instantiate and assign message
