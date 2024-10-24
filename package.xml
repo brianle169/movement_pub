@@ -3,11 +3,14 @@
 <package format="3">
   <name>movement_pub</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Movement data publisher node. This node will publish messages (custom_interfaces/msg/CircleMovement)
+              to a topic, which will then be used by a subscriber node to control the movement of the turtle in turtlesim
+  </description>
   <maintainer email="83758821+brianle169@users.noreply.github.com">minh</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
