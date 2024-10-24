@@ -1,15 +1,22 @@
+#include <chrono>
 #include "rclcpp/rclcpp.hpp"
 #include "custom_interfaces/msg/circle_movement.hpp"
 
 class MovementPublisher : public rclcpp::Node {
 public:
-    MovementPublisher() : Node("movement_publisher")
+    MovementPublisher() : Node("movement_publisher"), lx(2.5), az(1.5)
     {
         publisher_ = this->create_publisher<custom_interfaces::msg::CircleMovement>("movement_data", 10);
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&MovementPublisher::publishCallback, this));
     }
 
 private:
+    void publishCallback() {
+
+    }
     rclcpp::Publisher<custom_interfaces::msg::CircleMovement>::SharedPtr publisher_;
+    rclcpp::TimerBase::SharedPtr timer_;
+    float lx, az; // linear-x and angular-z
 };
 
 int main(int argc, char ** argv) {
