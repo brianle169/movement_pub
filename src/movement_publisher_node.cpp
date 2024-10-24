@@ -14,5 +14,7 @@ private:
 
 int main(int argc, char ** argv) {
     rclcpp::init(argc, argv);
+    auto publisher_node = std::make_shared<MovementPublisher>();
+    rclcpp::spin(publisher_node);
     rclcpp::shutdown();
 }
