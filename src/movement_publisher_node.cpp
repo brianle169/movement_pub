@@ -12,7 +12,11 @@ public:
 
 private:
     void publishCallback() {
-
+        // Instantiate and assign message
+        auto message = custom_interfaces::msg::CircleMovement();
+        message.linear_x = lx;
+        message.angular_z = az;
+        RCLCPP_INFO(this->get_logger(), "Publishing movement data:\n- linear_x: %.1f\n- angular_z: %.1f",message.linear_x, message.angular_z);
     }
     rclcpp::Publisher<custom_interfaces::msg::CircleMovement>::SharedPtr publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
